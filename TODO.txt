@@ -1,0 +1,5 @@
+1, NetworkManager类中的POST方法暂时没有定义BODY，即QHttpMultiPart
+
+2, 自动登录功能的实现，目前每次登录都要填写用户名/密码。如果是同一用户，可以通过存取ACCESSTOKEN完成此功能。
+
+3, http连接中错误的输出和处理
