@@ -25,7 +25,6 @@ public:
   QByteArray getMethod(const QUrl &url);
 
   QByteArray postMethod(const QUrl &url, QHttpMultiPart &parts);
-  QByteArray postMethod(const QUrl &url);
 
   static QNetworkAccessManager *qAccessManager;
 

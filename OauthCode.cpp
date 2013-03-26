@@ -2,7 +2,7 @@
 
 #include <QtGui>
 #include <QSslSocket>
-#include <QtWebKitWidgets>
+#include <QtWebKitWidgets/QWebView>
 #include <QtWidgets>
 #include "Constraint.h"
 

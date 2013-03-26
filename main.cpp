@@ -4,7 +4,7 @@
 
 int main(int argc, char** argv)
 {
-QApplication app(argc, argv);
-    OauthAccessToken xxx;
-    return app.exec();
+  QApplication app(argc, argv);
+  OauthAccessToken xxx;
+  return app.exec();
 }

@@ -12,7 +12,7 @@ class Constraint
   const static QString RedirectUrl;
   const static QString OauthGetCodeUrl;
   static QString AccessToken;
-  static QString GetTokenUrl;
+  static QString ExpiresIn;
 
 };
 

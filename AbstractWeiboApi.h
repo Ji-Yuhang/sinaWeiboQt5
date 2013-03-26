@@ -1,15 +1,14 @@
 #ifndef ABSTRACTWEIBOAPI_H
 #define ABSTRACTWEIBOAPI_H
 
-#include <QObject>
-#include <QUrl>
-#include <QMap>
+#include <QtCore/QUrl>
+#include <QtCore/QMap>
+#include <QtNetwork/QHttpMultiPart>
 
-class AbstractWeiboApi : public QObject
+class AbstractWeiboApi
 {
-  Q_OBJECT
 public:
-  explicit AbstractWeiboApi(QObject *parent = 0);
+  explicit AbstractWeiboApi();
 
   /**
    * @brief is Http Get method?
@@ -17,6 +16,21 @@ public:
    */
   virtual bool isHttpGet() = 0;
   QUrl getUrl();
+
+  /**
+   * @brief  set the http post method's body.
+   * You don't need to achieve this function if Api don't use http body
+   */
+  virtual QList<QHttpPart> setPostMultiPart() {
+    QList<QHttpPart> xx;
+    return xx;
+  }
+
+  void addKeyValueInUrl(const QString &key, const QString &value) {
+    keyValueUrl.insert(key, value);
+  }
+
+  virtual void parse(const QByteArray &responseStr) = 0;
 
 signals:
   
@@ -37,12 +51,8 @@ private:
    * eg. https://api.weibo.com/2/users/show.json?id=333
    * in this func,must use func: addKeyValueInUrl("id", "333")
    */
-  virtual QString setKeyValueUrl() = 0;
+  virtual void setKeyValueUrl() = 0;
 
-  // TODO:  .
-  void addKeyValueInUrl(const QString &key, const QString &value) {
-    keyValueUrl.insert(key, value);
-  }
 
   QMap<QString, QString> keyValueUrl;
   

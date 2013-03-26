@@ -7,7 +7,4 @@ const QString Constraint::RedirectUrl = "https://api.weibo.com/oauth2/default.ht
 const QString Constraint::OauthGetCodeUrl = Constraint::WeiboApiUrl + "/oauth2/authorize?client_id=" +
     Constraint::AppKey + "&redirect_uri=" + Constraint::RedirectUrl + "&response_type=code";
 QString Constraint::AccessToken = "";
-// getTokenUrl get the Weibo Access_token by code.
-QString Constraint::GetTokenUrl = Constraint::WeiboApiUrl + "/oauth2/access_token?client_id="
-    + Constraint::AppKey + "&client_secret=" + Constraint::AppSecret +
-    "&grant_type=authorization_code&redirect_uri=" + Constraint::RedirectUrl + "&code=";
+QString Constraint::ExpiresIn = "0";

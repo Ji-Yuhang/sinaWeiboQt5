@@ -2,8 +2,7 @@
 #include "Constraint.h"
 #include <QtCore>
 
-AbstractWeiboApi::AbstractWeiboApi(QObject *parent) :
-  QObject(parent)
+AbstractWeiboApi::AbstractWeiboApi()
 {
 }
 

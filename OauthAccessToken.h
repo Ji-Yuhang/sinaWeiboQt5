@@ -3,20 +3,25 @@
 
 #include <QObject>
 #include "OauthCode.h"
-#include "NetworkManager.h"
+#include "AbstractWeiboApi.h"
+#include <QtNetwork/QHttpMultiPart>
 
-class OauthAccessToken : public QObject
+class OauthAccessToken : public QObject, public AbstractWeiboApi
 {
   Q_OBJECT
 public:
   explicit OauthAccessToken(QObject *parent = 0);
-  
+  virtual bool isHttpGet();
+  void parse(const QByteArray &responseStr);
+
 signals:
   
 public slots:
-  void getAccessToekn(const QString &code);
+  void getAccessToekn(const QString &apiCode);
 
 private:
+  virtual QString setApiUrlSuffix();
+  virtual void setKeyValueUrl();
   OauthCode *getCode;
 
 };

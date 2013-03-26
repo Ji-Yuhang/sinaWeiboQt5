@@ -12,7 +12,6 @@ NetworkManager::NetworkManager(QObject *parent) :
 {
 }
 
-
 NetworkManager *NetworkManager::getSingleNetworkManager()
 {
   if (manager == NULL) {
@@ -32,7 +31,6 @@ QByteArray NetworkManager::getMethod(const QUrl &url)
   return getReplyStr(reply);
 }
 
-
 QByteArray NetworkManager::postMethod(const QUrl &url, QHttpMultiPart &parts )
 {
   QNetworkRequest request(url);
@@ -43,22 +41,12 @@ QByteArray NetworkManager::postMethod(const QUrl &url, QHttpMultiPart &parts )
   return getReplyStr(reply);
 }
 
-QByteArray NetworkManager::postMethod(const QUrl &url)
-{
-  QNetworkRequest request(url);
-  qDebug() << url;
-  // TODO: header may must be changed by some API, maybe!
-  request.setHeader(QNetworkRequest::ContentTypeHeader,
-                    "application/x-www-form-urlencoded");
-  QNetworkReply *reply = qAccessManager->post(request, "");
-  return getReplyStr(reply);
-}
-
 QByteArray NetworkManager::getReplyStr(QNetworkReply *reply)
 {
   QEventLoop loop;
   connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
   loop.exec();
   QByteArray tmp = reply->readAll();
+  reply->deleteLater();
   return tmp;
 }
