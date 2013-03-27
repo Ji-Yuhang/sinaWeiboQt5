@@ -1,7 +1,7 @@
 #ifndef OAUTHACCESSTOKEN_H
 #define OAUTHACCESSTOKEN_H
 
-#include <QObject>
+#include <QtCore/QObject>
 #include "OauthCode.h"
 #include "AbstractWeiboApi.h"
 #include <QtNetwork/QHttpMultiPart>

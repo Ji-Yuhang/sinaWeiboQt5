@@ -1,4 +1,6 @@
 #include "GetRequest.h"
+#include "OauthCode.h"
+#include "OauthAccessToken.h"
 
 GetRequest::GetRequest()
 {
@@ -18,6 +20,5 @@ void GetRequest::exec(AbstractWeiboApi *apiRequest)
 
     responseStr = manager->postMethod(apiRequest->getUrl(), multiPart);
   }
-
   apiRequest->parse(responseStr);
 }

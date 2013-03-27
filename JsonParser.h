@@ -2,7 +2,9 @@
 #define JSONPARSER_H
 
 #include <QObject>
-#include <QtCore>
+#include <QtCore/QJsonObject>
+#include <QtCore/QJsonParseError>
+#include <QtCore/QVariant>
 
 class JsonParser : public QObject
 {

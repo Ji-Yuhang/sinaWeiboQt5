@@ -1,7 +1,6 @@
 #include "OauthCode.h"
 
-#include <QtGui>
-#include <QSslSocket>
+#include <QtNetwork/QSslSocket>
 #include <QtWebKitWidgets/QWebView>
 #include <QtWidgets>
 #include "Constraint.h"
@@ -15,6 +14,7 @@ OauthCode::OauthCode(QDialog *parent)
     qDebug() << "Sina Weibo requires SSL support.";
     exit(1);
   }
+  setAttribute(Qt::WA_DeleteOnClose);
 
   view = new QWebView;
   connect(view, SIGNAL(urlChanged(QUrl)), SLOT(printUrl(QUrl)));
