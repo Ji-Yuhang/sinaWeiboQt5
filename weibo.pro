@@ -14,7 +14,9 @@ HEADERS += AbstractWeiboApi.h \
            JsonParser.h \
            NetworkManager.h \
            OauthAccessToken.h \
-           OauthCode.h
+           OauthCode.h \
+    LogModel.h \
+    LogWindow.h
 SOURCES += AbstractWeiboApi.cpp \
            Constraint.cpp \
            GetRequest.cpp \
@@ -22,4 +24,9 @@ SOURCES += AbstractWeiboApi.cpp \
            main.cpp \
            NetworkManager.cpp \
            OauthAccessToken.cpp \
-           OauthCode.cpp
+           OauthCode.cpp \
+    LogModel.cpp \
+    LogWindow.cpp
+
+FORMS += \
+    LogWindow.ui
