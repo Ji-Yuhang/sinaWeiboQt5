@@ -14,7 +14,7 @@ void GetRequest::exec(AbstractWeiboApi *apiRequest)
   if (apiRequest->isHttpGet())
     responseStr = manager->getMethod(apiRequest->getUrl());
   else {
-    QHttpMultiPart multiPart;
+    QHttpMultiPart multiPart(QHttpMultiPart::FormDataType);
     QList<QHttpPart> partList = apiRequest->setPostMultiPart();
     for (int i = 0; i < partList.size(); i++)
       multiPart.append(partList.at(i));

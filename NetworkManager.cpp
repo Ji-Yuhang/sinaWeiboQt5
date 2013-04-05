@@ -34,9 +34,6 @@ QByteArray NetworkManager::getMethod(const QUrl &url)
 QByteArray NetworkManager::postMethod(const QUrl &url, QHttpMultiPart &parts )
 {
   QNetworkRequest request(url);
-  // TODO: header may be changed by some API, maybe!
-  request.setHeader(QNetworkRequest::ContentTypeHeader,
-                    "application/x-www-form-urlencoded");
   QNetworkReply *reply = qAccessManager->post(request, &parts);
   return getReplyStr(reply);
 }

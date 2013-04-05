@@ -16,7 +16,8 @@ HEADERS += AbstractWeiboApi.h \
            OauthAccessToken.h \
            OauthCode.h \
     LogModel.h \
-    LogWindow.h
+    LogWindow.h \
+    ReqStatusesUpload.h
 SOURCES += AbstractWeiboApi.cpp \
            Constraint.cpp \
            GetRequest.cpp \
@@ -26,7 +27,8 @@ SOURCES += AbstractWeiboApi.cpp \
            OauthAccessToken.cpp \
            OauthCode.cpp \
     LogModel.cpp \
-    LogWindow.cpp
+    LogWindow.cpp \
+    ReqStatusesUpload.cpp
 
 FORMS += \
     LogWindow.ui

@@ -3,6 +3,8 @@
 #include "LogWindow.h"
 #include <QtWidgets/QApplication>
 
+#include "ReqStatusesUpload.h"
+
 
 int main(int argc, char** argv)
 {
@@ -14,5 +16,10 @@ int main(int argc, char** argv)
   logwindow.show();
   OauthAccessToken xxx;
   request.exec(&xxx);
+
+  // test upload images....
+  ReqStatusesUpload uploadpic;
+  request.exec(&uploadpic);
+
   return app.exec();
 }

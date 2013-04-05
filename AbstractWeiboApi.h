@@ -4,6 +4,7 @@
 #include <QtCore/QUrl>
 #include <QtCore/QMap>
 #include <QtNetwork/QHttpMultiPart>
+#include "Constraint.h"
 
 class AbstractWeiboApi
 {
