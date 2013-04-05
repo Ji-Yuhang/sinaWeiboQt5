@@ -12,7 +12,7 @@ class OauthAccessToken : public QObject, public AbstractWeiboApi
 public:
   explicit OauthAccessToken(QObject *parent = 0);
   virtual bool isHttpGet();
-  void parse(const QByteArray &responseStr);
+  QString parse(const QByteArray &responseStr);
 
 signals:
   

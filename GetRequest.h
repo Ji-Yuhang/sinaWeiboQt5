@@ -3,14 +3,22 @@
 
 #include "AbstractWeiboApi.h"
 #include "NetworkManager.h"
+#include <QtCore/QDateTime>
+#include <QtCore/QObject>
 
-class GetRequest
+class GetRequest : public QObject
 {
+  Q_OBJECT
 public:
-  GetRequest();
+  GetRequest(QObject *parent = 0);
   void exec(AbstractWeiboApi *apiRequest);
+
+signals:
+  void sendLog(const QString &url, const QDateTime &times, const QString &responseStr,
+               const QString &error);
 private:
   NetworkManager *manager;
+
 
 };
 

@@ -17,6 +17,7 @@ QUrl AbstractWeiboApi::getUrl()
     i.next();
     urlStr += QString("%1=%2&").arg(i.key()).arg(i.value()) ;
   }
+  urlStr.chop(1);
 
   QUrl url(urlStr);
   if (!url.isValid()) {

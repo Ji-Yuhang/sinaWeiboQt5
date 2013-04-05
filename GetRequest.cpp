@@ -2,7 +2,8 @@
 #include "OauthCode.h"
 #include "OauthAccessToken.h"
 
-GetRequest::GetRequest()
+GetRequest::GetRequest(QObject *parent)
+  : QObject(parent)
 {
   manager = NetworkManager::getSingleNetworkManager();
 }
@@ -20,5 +21,8 @@ void GetRequest::exec(AbstractWeiboApi *apiRequest)
 
     responseStr = manager->postMethod(apiRequest->getUrl(), multiPart);
   }
-  apiRequest->parse(responseStr);
+  QString error;
+  error = apiRequest->parse(responseStr);
+  emit sendLog(apiRequest->getUrl().toString(), QDateTime::currentDateTime(),
+               QString::fromUtf8(responseStr), error);
 }

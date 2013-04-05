@@ -30,7 +30,8 @@ public:
     keyValueUrl.insert(key, value);
   }
 
-  virtual void parse(const QByteArray &responseStr) = 0;
+  // return error string
+  virtual QString parse(const QByteArray &responseStr) = 0;
 
 signals:
   

@@ -17,20 +17,19 @@ bool OauthAccessToken::isHttpGet()
   return false;
 }
 
-void OauthAccessToken::parse(const QByteArray &responseStr)
+QString OauthAccessToken::parse(const QByteArray &responseStr)
 {
   JsonParser parser(responseStr);
   qDebug() << responseStr;
   QVariantMap responseMap = parser.getJsonMap();
   QString accessToken = responseMap["access_token"].toString();
- qDebug() << "accessToken is:\t" << accessToken;
   if (accessToken.isEmpty()) {
-    qDebug() << "error AccessToken:\t" << accessToken;
-    exit(1);
+    return "error AccessToken:\t";
   }
   Constraint::AccessToken = accessToken;
   Constraint::ExpiresIn = responseMap["expires_in"].toString();
   qDebug() << "expires_in is:\t" << Constraint::ExpiresIn ;
+  return "";
 }
 
 void OauthAccessToken::getAccessToekn(const QString &apiCode)

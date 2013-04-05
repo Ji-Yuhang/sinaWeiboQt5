@@ -69,11 +69,21 @@ Qt::ItemFlags LogModel::flags(const QModelIndex &index) const
   return flags;
 }
 
-bool LogModel::insertRow(const LogData &data, int row, const QModelIndex &index)
+bool LogModel::insertRow(const LogData &data, int row)
 {
-  Q_UNUSED(index);
   beginInsertRows(QModelIndex(), row, row);
   modelList.append(data);
   endInsertRows();
   return true;
+}
+
+void LogModel::addLogData(const QString &url, const QDateTime &times, const QString &responseStr, const QString &error)
+{
+  LogData tmp;
+  tmp.url = url;
+  tmp.timeLine = times;
+  tmp.responseStr = responseStr;
+  tmp.errorStr = error;
+
+  insertRow(tmp, rowCount(QModelIndex()));
 }

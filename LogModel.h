@@ -24,10 +24,9 @@ public:
   int rowCount(const QModelIndex &parent) const;
   int columnCount(const QModelIndex &parent) const;
   QVariant data(const QModelIndex &index, int role) const;
-  bool setData(const QModelIndex &index, const QVariant &value, int role);
   QVariant headerData(int section, Qt::Orientation orientation, int role) const;
   Qt::ItemFlags flags(const QModelIndex &index) const;
-  bool insertRow(const LogData &data, int row, const QModelIndex &index = QModelIndex());
+  bool insertRow(const LogData &data, int row);
 
   QString errorStr(const int index) {
     return modelList[index].errorStr;
@@ -36,6 +35,10 @@ public:
   QString responseStr(const int index) {
     return modelList[index].responseStr;
   }
+
+private slots:
+  void addLogData(const QString &url, const QDateTime &times, const QString &responseStr,
+               const QString &error);
 
 private:
   QList<LogData> modelList;

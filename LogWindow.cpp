@@ -7,14 +7,17 @@ LogWindow::LogWindow()
   proxyModel.setDynamicSortFilter(true);
   proxyModel.setFilterKeyColumn(2);
   tableView->setModel(&proxyModel);
-  tableView->resizeColumnsToContents();
+  // tableView->resizeColumnsToContents();
   tableView->horizontalHeader()->stretchLastSection();
-  tableView->setSelectionMode(QAbstractItemView::SingleSelection);
+  // tableView->setSelectionMode(QAbstractItemView::SingleSelection);
   tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
 
   connect(listWidget, SIGNAL(currentRowChanged(int)), SLOT(proxyModelFilterChanged(int)));
   connect(tableView->selectionModel(), SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),
           SLOT(viewRowChanged(QModelIndex,QModelIndex)));
+
+  connect(this, SIGNAL(sendLogData(QString,QDateTime,QString,QString)),
+          &sourceModel, SLOT(addLogData(QString,QDateTime,QString,QString)));
 }
 
 void LogWindow::proxyModelFilterChanged(int index)
