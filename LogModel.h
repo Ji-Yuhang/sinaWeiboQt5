@@ -5,13 +5,14 @@
 #include <QtCore/QObject>
 #include <QtCore/QAbstractTableModel>
 #include <QtCore/QDateTime>
+#include <QtCore/QJsonObject>
 
 class LogData
 {
 public:
   QDateTime timeLine;
   QString url;
-  QString responseStr;
+  QJsonObject responseObject;
   QString errorStr;
 };
 
@@ -32,12 +33,12 @@ public:
     return modelList[index].errorStr;
   }
 
-  QString responseStr(const int index) {
-    return modelList[index].responseStr;
+  QJsonObject responseObj(const int index) {
+    return modelList[index].responseObject;
   }
 
 private slots:
-  void addLogData(const QString &url, const QDateTime &times, const QString &responseStr,
+  void addLogData(const QString &url, const QDateTime &times, const QJsonObject &object,
                const QString &error);
 
 private:

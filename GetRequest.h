@@ -14,7 +14,7 @@ public:
   void exec(AbstractWeiboApi *apiRequest);
 
 signals:
-  void sendLog(const QString &url, const QDateTime &times, const QString &responseStr,
+  void sendLog(const QString &url, const QDateTime &times, const QJsonObject &response,
                const QString &error);
 private:
   NetworkManager *manager;

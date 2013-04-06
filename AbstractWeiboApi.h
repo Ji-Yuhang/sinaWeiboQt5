@@ -32,7 +32,7 @@ public:
   }
 
   // return error string
-  virtual QString parse(const QByteArray &responseStr) = 0;
+  virtual QString parse(const QJsonObject &response) = 0;
 
 signals:
   

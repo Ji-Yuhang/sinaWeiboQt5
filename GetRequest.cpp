@@ -1,6 +1,7 @@
 #include "GetRequest.h"
 #include "OauthCode.h"
 #include "OauthAccessToken.h"
+#include "JsonParser.h"
 
 GetRequest::GetRequest(QObject *parent)
   : QObject(parent)
@@ -22,7 +23,13 @@ void GetRequest::exec(AbstractWeiboApi *apiRequest)
     responseStr = manager->postMethod(apiRequest->getUrl(), multiPart);
   }
   QString error;
-  error = apiRequest->parse(responseStr);
+  JsonParser parser(responseStr);
+
+  QJsonObject responseMap = parser.getJsonObject();
+  if (responseMap.isEmpty())
+    error = responseStr;
+  else
+    error = apiRequest->parse(responseMap);
   emit sendLog(apiRequest->getUrl().toString(), QDateTime::currentDateTime(),
-               QString::fromUtf8(responseStr), error);
+               responseMap, error);
 }

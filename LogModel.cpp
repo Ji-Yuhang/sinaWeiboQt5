@@ -77,12 +77,13 @@ bool LogModel::insertRow(const LogData &data, int row)
   return true;
 }
 
-void LogModel::addLogData(const QString &url, const QDateTime &times, const QString &responseStr, const QString &error)
+void LogModel::addLogData(const QString &url, const QDateTime &times,
+                          const QJsonObject &object, const QString &error)
 {
   LogData tmp;
   tmp.url = url;
   tmp.timeLine = times;
-  tmp.responseStr = responseStr;
+  tmp.responseObject = object;
   tmp.errorStr = error;
 
   insertRow(tmp, rowCount(QModelIndex()));

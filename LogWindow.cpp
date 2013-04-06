@@ -1,4 +1,5 @@
 #include "LogWindow.h"
+#include "JsonTree.h"
 
 LogWindow::LogWindow()
 {
@@ -16,8 +17,8 @@ LogWindow::LogWindow()
   connect(tableView->selectionModel(), SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),
           SLOT(viewRowChanged(QModelIndex,QModelIndex)));
 
-  connect(this, SIGNAL(sendLogData(QString,QDateTime,QString,QString)),
-          &sourceModel, SLOT(addLogData(QString,QDateTime,QString,QString)));
+  connect(this, SIGNAL(sendLogData(QString,QDateTime,QJsonObject,QString)),
+          &sourceModel, SLOT(addLogData(QString,QDateTime,QJsonObject,QString)));
 }
 
 void LogWindow::proxyModelFilterChanged(int index)
@@ -46,6 +47,7 @@ void LogWindow::viewRowChanged(const QModelIndex &current, const QModelIndex &pr
 
   int index = srcIndex.row();
   errorString->setText(sourceModel.errorStr(index));
-  responseString->setText(sourceModel.responseStr(index));
+  treeWidget->clear();
+  JsonTree(treeWidget, sourceModel.responseObj(index));
 
 }

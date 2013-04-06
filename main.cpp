@@ -11,8 +11,8 @@ int main(int argc, char** argv)
   QApplication app(argc, argv);
   GetRequest request;
   LogWindow logwindow;
-  QObject::connect(&request, SIGNAL(sendLog(QString,QDateTime,QString,QString)),
-                   &logwindow, SIGNAL(sendLogData(QString,QDateTime,QString,QString)));
+  QObject::connect(&request, SIGNAL(sendLog(QString,QDateTime,QJsonObject,QString)),
+                   &logwindow, SIGNAL(sendLogData(QString,QDateTime,QJsonObject,QString)));
   logwindow.show();
   OauthAccessToken xxx;
   request.exec(&xxx);

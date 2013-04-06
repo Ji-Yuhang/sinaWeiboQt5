@@ -1,7 +1,6 @@
 #include "OauthAccessToken.h"
 #include "NetworkManager.h"
 #include "Constraint.h"
-#include "JsonParser.h"
 #include <QtCore>
 
 OauthAccessToken::OauthAccessToken(QObject *parent) :
@@ -17,17 +16,14 @@ bool OauthAccessToken::isHttpGet()
   return false;
 }
 
-QString OauthAccessToken::parse(const QByteArray &responseStr)
+QString OauthAccessToken::parse(const QJsonObject &response)
 {
-  JsonParser parser(responseStr);
-  qDebug() << responseStr;
-  QVariantMap responseMap = parser.getJsonMap();
-  QString accessToken = responseMap["access_token"].toString();
+  QString accessToken = response["access_token"].toString();
   if (accessToken.isEmpty()) {
     return "error AccessToken:\t";
   }
   Constraint::AccessToken = accessToken;
-  Constraint::ExpiresIn = responseMap["expires_in"].toString();
+  Constraint::ExpiresIn = response["expires_in"].toString();
   qDebug() << "expires_in is:\t" << Constraint::ExpiresIn ;
   return "";
 }

@@ -9,7 +9,7 @@ public:
   ReqStatusesUpload();
   virtual bool isHttpGet() { return false; }
   virtual QList<QHttpPart> setPostMultiPart();
-  virtual QString parse(const QByteArray &responseStr);
+  virtual QString parse(const QJsonObject &response);
 
 private:
   virtual QString setApiUrlSuffix() {

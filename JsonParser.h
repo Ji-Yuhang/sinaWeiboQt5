@@ -16,8 +16,8 @@ public:
   explicit JsonParser( const QByteArray &jsonText , QObject *parent = 0);
    ~JsonParser();
 
-  QVariantMap getJsonMap() {
-    return jsonObject.toVariantMap();
+  QJsonObject getJsonObject() {
+    return jsonObject;
   }
     
 private:

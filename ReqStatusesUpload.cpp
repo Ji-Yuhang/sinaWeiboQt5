@@ -12,7 +12,7 @@ QList<QHttpPart> ReqStatusesUpload::setPostMultiPart()
   QHttpPart statusPart;
   statusPart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("text/plain"));
   statusPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"status\""));
-  statusPart.setBody("哈哈哈，测试QT5-SINA-WEIBO-API");
+  statusPart.setBody("测试QT5-SINA-WEIBO-API, json Formatter");
 
   QHttpPart imagePart;
   imagePart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("image/jpeg"));
@@ -28,7 +28,7 @@ QList<QHttpPart> ReqStatusesUpload::setPostMultiPart()
   return picPost;
 }
 
-QString ReqStatusesUpload::parse(const QByteArray &responseStr)
+QString ReqStatusesUpload::parse(const QJsonObject &response)
 {
   return "";
 }

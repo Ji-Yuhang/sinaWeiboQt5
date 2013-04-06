@@ -13,7 +13,7 @@ public:
   explicit LogWindow();
   
 signals:
-  void sendLogData(const QString &url, const QDateTime &times, const QString &responseStr,
+  void sendLogData(const QString &url, const QDateTime &times, const QJsonObject &object,
                   const QString &error);
 
 public slots:
