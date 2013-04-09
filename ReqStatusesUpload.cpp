@@ -30,6 +30,7 @@ QList<QHttpPart> ReqStatusesUpload::setPostMultiPart()
 
 QString ReqStatusesUpload::parse(const QJsonObject &response)
 {
+  Q_UNUSED(response);
   return "";
 }
 

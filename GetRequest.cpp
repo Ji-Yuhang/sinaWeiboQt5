@@ -26,10 +26,15 @@ void GetRequest::exec(AbstractWeiboApi *apiRequest)
   JsonParser parser(responseStr);
 
   QJsonObject responseMap = parser.getJsonObject();
+
   if (responseMap.isEmpty())
     error = responseStr;
   else
     error = apiRequest->parse(responseMap);
+
+  if (responseMap.find("error") != responseMap.end())
+    error = responseStr;
+
   emit sendLog(apiRequest->getUrl().toString(), QDateTime::currentDateTime(),
                responseMap, error);
 }

@@ -4,6 +4,9 @@
 #include <QtWidgets/QApplication>
 
 #include "ReqStatusesUpload.h"
+#include "ReqCommentsByMe.h"
+#include "ReqFriendshipsFriends.h"
+#include "ReqStatusesUserTimeline.h"
 
 
 int main(int argc, char** argv)
@@ -18,8 +21,17 @@ int main(int argc, char** argv)
   request.exec(&xxx);
 
   // test upload images....
-  ReqStatusesUpload uploadpic;
-  request.exec(&uploadpic);
+  //ReqStatusesUpload uploadpic;
+  //request.exec(&uploadpic);
+
+  ReqStatusesUserTimeline userWeibo;
+  request.exec(&userWeibo);
+
+  ReqCommentsByMe comment;
+  request.exec(&comment);
+
+  ReqFriendshipsFriends friends;
+  request.exec(&friends);
 
   return app.exec();
 }

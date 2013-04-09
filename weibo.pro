@@ -18,7 +18,10 @@ HEADERS += AbstractWeiboApi.h \
     LogModel.h \
     LogWindow.h \
     ReqStatusesUpload.h \
-    JsonTree.h
+    JsonTree.h \
+    ReqFriendshipsFriends.h \
+    ReqStatusesUserTimeline.h \
+    ReqCommentsByMe.h
 SOURCES += AbstractWeiboApi.cpp \
            Constraint.cpp \
            GetRequest.cpp \
@@ -30,7 +33,10 @@ SOURCES += AbstractWeiboApi.cpp \
     LogModel.cpp \
     LogWindow.cpp \
     ReqStatusesUpload.cpp \
-    JsonTree.cpp
+    JsonTree.cpp \
+    ReqFriendshipsFriends.cpp \
+    ReqStatusesUserTimeline.cpp \
+    ReqCommentsByMe.cpp
 
 FORMS += \
     LogWindow.ui
