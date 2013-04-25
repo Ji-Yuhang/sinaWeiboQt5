@@ -13,6 +13,5 @@ SINA Weibo Client by Qt5
 
 开发人员及联系方式
 ----------
-liangqi cavendish.qi@gmail.com
-sd44    sd44sd44@yeah.net
+sd44    <sd44sd44@yeah.net>
 
